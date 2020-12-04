@@ -1,7 +1,8 @@
+// set up environment
+require('dotenv').config();
 const express = require('express');
 const app = express();
 const PORT = 3000;
-require('dotenv').config();
 const mongoose = require('mongoose');
 const MONGO_STRING = process.env.MONGO_STRING;
 
@@ -12,16 +13,27 @@ app.use(express.urlencoded({ extended: true }));
 app.set('view engine', 'jsx');
 app.engine('jsx', require('express-react-views').createEngine());
 
+// connect to database
 mongoose.connect(MONGO_STRING, { useNewUrlParser: true, useUnifiedTopology: true });
 mongoose.connection.once('open', () => {
   console.log('Connected to MongoDB');
 });
 
+// models
+const Product = require('./models/product.js');
+
 // routes
 
 // index
 app.get('/product', (req, res) => {
-  res.render('Index');
+  Product.find({}, (error, allProducts) => {
+    if (error) console.error(error);
+    else {
+      res.render('Index', {
+        products: allProducts
+      });
+    }
+  });
 });
 
 // new
@@ -31,7 +43,10 @@ app.get('/product/new', (req, res) => {
 
 // create
 app.post('/product', (req, res) => {
-  res.send(req.body);
+  Product.create(req.body, (error, createdProduct) => {
+    if (error) console.error(error);
+    else res.send(createdProduct);
+  });
 });
 
 // listener

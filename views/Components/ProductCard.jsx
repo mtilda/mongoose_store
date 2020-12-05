@@ -2,8 +2,9 @@ const React = require('react');
 
 const styles = {
   card: {
-    minWidth: '300px',
-    height: '400px',
+    padding: '10px',
+    minWidth: '250px',
+    height: '320px',
     overflow: 'hidden'
   },
   a: {
@@ -45,10 +46,9 @@ const styles = {
 class ProductCard extends React.Component {
   render () {
     const product = this.props.product;
-    const index = this.props.index;
 
     return (
-      <li key={index} style={styles.card}>
+      <li style={styles.card}>
         <a href={`/product/${product.id}`}>
           <div style={{ ...styles.img, backgroundImage: `url(${product.image})` }} />
         </a>

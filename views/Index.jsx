@@ -9,8 +9,7 @@ const styles = {
     maxWidth: '1400px',
     listStyle: 'none',
     display: 'flex',
-    flexWrap: 'wrap',
-    gap: '10px'
+    flexWrap: 'wrap'
   }
 };
 
@@ -18,10 +17,10 @@ class Index extends React.Component {
   render () {
     return (
       <Layout>
-        <a href='/product/new'><button>new product</button></a>
+        <a href='/product/new'>new product</a>
         <ul style={styles.list}>
           {this.props.products.map((product, index) =>
-            <ProductCard key={index} product={product} index={index} />
+            <ProductCard key={index} product={product} />
           )}
         </ul>
       </Layout>

@@ -19,6 +19,10 @@ mongoose.connection.once('open', () => {
   console.log('Connected to MongoDB');
 });
 
+// Make Mongoose use `findOneAndUpdate()`. Note that this option is `true`
+// by default, you need to set it to false.
+mongoose.set('useFindAndModify', false);
+
 // models
 const Product = require('./models/product.js');
 
@@ -41,11 +45,31 @@ app.get('/product/new', (req, res) => {
   res.render('New');
 });
 
+// update
+app.post('/product/:id', (req, res) => {
+  Product.findByIdAndUpdate(req.params.id, req.body, (error, updatedProduct) => {
+    if (error) res.send(error);
+    else res.redirect('/product/' + updatedProduct.id);
+  });
+});
+
 // create
 app.post('/product', (req, res) => {
   Product.create(req.body, (error, createdProduct) => {
     if (error) res.send(error);
-    else res.send(createdProduct);
+    else res.redirect('/product');
+  });
+});
+
+// edit
+app.get('/product/edit/:id', (req, res) => {
+  Product.findById(req.params.id, (error, product) => {
+    if (error) res.send(error);
+    else {
+      res.render('New', {
+        product: product
+      });
+    }
   });
 });
 

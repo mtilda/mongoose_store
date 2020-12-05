@@ -4,6 +4,10 @@ const styles = {
   h1: {
     width: '100%',
     textAlign: 'center'
+  },
+  body: {
+    margin: '0 auto',
+    maxWidth: '1000px'
   }
 };
 
@@ -13,7 +17,9 @@ class Layout extends React.Component {
       <>
         <h1 style={styles.h1}>Mongoose Store</h1>
         <hr />
-        {this.props.children}
+        <div style={styles.body}>
+          {this.props.children}
+        </div>
       </>
     );
   }

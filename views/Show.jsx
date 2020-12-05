@@ -3,9 +3,8 @@ const Layout = require('./Components/Layout');
 
 const styles = {
   body: {
-    margin: '0 auto',
+    marginTop: '10px',
     width: '100%',
-    maxWidth: '800px',
     overflow: 'hidden',
     display: 'flex'
   },
@@ -56,14 +55,13 @@ const styles = {
 class Show extends React.Component {
   render () {
     const product = this.props.product;
-    const index = this.props.index;
 
     styles.stock.color = product.quantity > 0 ? '#2B2' : '#E33';
 
     return (
       <Layout>
-        <a href='/product'><button>back</button></a>
-        <div key={index} style={styles.body}>
+        <a href='/product'>back</a> | <a href={`/product/edit/${product.id}`}>edit</a>
+        <div style={styles.body}>
           <div style={{ ...styles.img, backgroundImage: `url(${product.image})` }} />
           <div style={styles.aside}>
             <h3 style={styles.title}>

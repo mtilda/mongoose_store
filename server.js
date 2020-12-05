@@ -1,4 +1,4 @@
-// set up environment
+// set up environment and variables
 require('dotenv').config();
 const express = require('express');
 const app = express();
@@ -27,7 +27,7 @@ const Product = require('./models/product.js');
 // index
 app.get('/product', (req, res) => {
   Product.find({}, (error, allProducts) => {
-    if (error) console.error(error);
+    if (error) res.send(error);
     else {
       res.render('Index', {
         products: allProducts
@@ -44,8 +44,20 @@ app.get('/product/new', (req, res) => {
 // create
 app.post('/product', (req, res) => {
   Product.create(req.body, (error, createdProduct) => {
-    if (error) console.error(error);
+    if (error) res.send(error);
     else res.send(createdProduct);
+  });
+});
+
+// show
+app.get('/product/:id', (req, res) => {
+  Product.findById(req.params.id, (error, product) => {
+    if (error) res.send(error);
+    else {
+      res.render('Show', {
+        product: product
+      });
+    }
   });
 });
 

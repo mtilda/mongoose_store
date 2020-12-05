@@ -49,11 +49,11 @@ class ProductCard extends React.Component {
 
     return (
       <li key={index} style={styles.card}>
-        <a href={`/product/${index}`}>
+        <a href={`/product/${product.id}`}>
           <div style={{ ...styles.img, backgroundImage: `url(${product.image})` }} />
         </a>
         <h3 style={styles.title}>
-          <a style={styles.a} href={`/product/${index}`}>
+          <a style={styles.a} href={`/product/${product.id}`}>
             {product.name}
           </a>
         </h3>

@@ -6,6 +6,8 @@ const PORT = 3000;
 const mongoose = require('mongoose');
 const MONGO_STRING = process.env.MONGO_STRING;
 
+app.use('/public', express.static('public'));
+
 // middleware
 app.use(express.urlencoded({ extended: true }));
 

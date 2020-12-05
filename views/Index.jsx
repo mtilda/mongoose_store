@@ -9,7 +9,8 @@ const styles = {
     maxWidth: '1400px',
     listStyle: 'none',
     display: 'flex',
-    flexWrap: 'wrap'
+    flexWrap: 'wrap',
+    gap: '20px'
   }
 };
 

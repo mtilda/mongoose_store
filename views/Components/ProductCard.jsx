@@ -2,8 +2,7 @@ const React = require('react');
 
 const styles = {
   card: {
-    padding: '10px',
-    minWidth: '250px',
+    width: '235px',
     height: '320px',
     overflow: 'hidden'
   },
@@ -20,7 +19,7 @@ const styles = {
   title: {
     margin: 0,
     padding: '5px 5px 0 5px',
-    fontSize: '1.8rem',
+    fontSize: '1.6rem',
     whiteSpace: 'nowrap',
     textOverflow: 'ellipsis',
     overflow: 'hidden'
@@ -28,7 +27,7 @@ const styles = {
   price: {
     margin: 0,
     padding: '5px 5px 0 5px',
-    fontSize: '1.5rem',
+    fontSize: '1.4rem',
     whiteSpace: 'nowrap',
     textOverflow: 'ellipsis',
     overflow: 'hidden',

@@ -60,7 +60,7 @@ class Show extends React.Component {
 
     return (
       <Layout>
-        <a href='/product'>back</a> | <a href={`/product/edit/${product.id}`}>edit</a>
+        <a href='/product'>back</a> | <a href={`/product/edit/${product.id}`}>edit</a> | <a href={`/product/delete/${product.id}`}>delete</a>
         <div style={styles.body}>
           <div style={{ ...styles.img, backgroundImage: `url(${product.image})` }} />
           <div style={styles.aside}>

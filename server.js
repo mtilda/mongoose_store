@@ -47,6 +47,14 @@ app.get('/product/new', (req, res) => {
   res.render('New');
 });
 
+// delete
+app.get('/product/delete/:id', (req, res) => {
+  Product.findByIdAndDelete(req.params.id, (error) => {
+    if (error) res.send(error);
+    else res.redirect('/product');
+  });
+});
+
 // update
 app.post('/product/:id', (req, res) => {
   Product.findByIdAndUpdate(req.params.id, req.body, (error, updatedProduct) => {

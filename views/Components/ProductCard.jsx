@@ -2,7 +2,7 @@ const React = require('react');
 
 const styles = {
   card: {
-    width: '320px',
+    minWidth: '300px',
     height: '400px',
     overflow: 'hidden'
   },

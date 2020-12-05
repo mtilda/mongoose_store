@@ -1,11 +1,8 @@
 const React = require('react');
+const Layout = require('./Components/Layout');
 const ProductCard = require('./Components/ProductCard');
 
 const styles = {
-  h1: {
-    width: '100%',
-    textAlign: 'center'
-  },
   list: {
     margin: '10px auto 0 auto',
     padding: 0,
@@ -20,16 +17,14 @@ const styles = {
 class Index extends React.Component {
   render () {
     return (
-      <>
-        <h1 style={styles.h1}>Mongoose Store</h1>
-        <hr />
+      <Layout>
         <a href='/product/new'><button>new product</button></a>
         <ul style={styles.list}>
           {this.props.products.map((product, index) =>
             <ProductCard key={index} product={product} index={index} />
           )}
         </ul>
-      </>
+      </Layout>
     );
   }
 }

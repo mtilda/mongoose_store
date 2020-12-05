@@ -1,18 +1,13 @@
 const React = require('react');
+const Layout = require('./Components/Layout');
 
 const styles = {
-  card: {
+  body: {
     margin: '0 auto',
     width: '100%',
     maxWidth: '800px',
     overflow: 'hidden',
     display: 'flex'
-  },
-  aside: {
-    paddingLeft: '10px'
-  },
-  a: {
-    color: '#000'
   },
   img: {
     margin: 0,
@@ -20,6 +15,10 @@ const styles = {
     height: '500px',
     backgroundSize: 'cover',
     backgroundPosition: 'center'
+  },
+  aside: {
+    flexGrow: 1,
+    paddingLeft: '10px'
   },
   title: {
     margin: 0,
@@ -62,19 +61,22 @@ class Show extends React.Component {
     styles.stock.color = product.quantity > 0 ? '#2B2' : '#E33';
 
     return (
-      <div key={index} style={styles.card}>
-        <div style={{ ...styles.img, backgroundImage: `url(${product.image})` }} />
-        <div style={styles.aside}>
-          <h3 style={styles.title}>
-            {product.name}
-          </h3>
-          <hr />
-          <h4 style={styles.price}><span style={{ fontSize: '0.6em' }}>Price:</span><span style={{ color: '#E33' }}>${product.price}</span></h4>
-          <p style={styles.p}>{product.description}</p>
-          <p style={styles.stock}>{product.quantity > 0 ? 'In Stock.' : 'Out of Stock.'}</p>
-          <p style={styles.p}><span style={{ fontWeight: 'bold' }}>Quanity: </span>{product.quantity}</p>
+      <Layout>
+        <a href='/product'><button>back</button></a>
+        <div key={index} style={styles.body}>
+          <div style={{ ...styles.img, backgroundImage: `url(${product.image})` }} />
+          <div style={styles.aside}>
+            <h3 style={styles.title}>
+              {product.name}
+            </h3>
+            <hr />
+            <h4 style={styles.price}><span style={{ fontSize: '0.6em' }}>Price:</span><span style={{ color: '#E33' }}>${product.price}</span></h4>
+            <p style={styles.p}>{product.description}</p>
+            <p style={styles.stock}>{product.quantity > 0 ? 'In Stock.' : 'Out of Stock.'}</p>
+            <p style={styles.p}><span style={{ fontWeight: 'bold' }}>Quanity: </span>{product.quantity}</p>
+          </div>
         </div>
-      </div>
+      </Layout>
     );
   }
 }

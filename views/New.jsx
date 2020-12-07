@@ -1,5 +1,6 @@
 const React = require('react');
 const Layout = require('./Components/Layout');
+const Nav = require('./Components/Nav');
 
 const styles = {
   form: {
@@ -24,11 +25,13 @@ class New extends React.Component {
 
     return (
       <Layout>
-        <a href={`/product${product.id ? '/' + product.id : ''}`}>back</a>
+        <Nav>
+          <a href={`/product${product.id ? '/' + product.id : ''}`}>back</a>
+        </Nav>
         {/* if id exists, this is an edit form and should update */}
         {/* if id does not exist, this is a new form and should create */}
         <h2>{`${product.id ? 'Edit Product' : 'New Product'}`}</h2>
-        <form action={`/product${product.id ? '/' + product.id : ''}`} method='POST' style={styles.form}>
+        <form action={`/product/${product.id ? `${product.id}/?_method=PUT` : ''}`} method='POST' style={styles.form}>
           <label>Name: </label><br />
           <input type='text' name='name' defaultValue={product.name} /><br />
           <label>Description: </label><br />

@@ -5,11 +5,14 @@ const app = express();
 const PORT = 3000;
 const mongoose = require('mongoose');
 const MONGO_STRING = process.env.MONGO_STRING;
+const methodOverride = require('method-override');
 
 app.use('/public', express.static('public'));
 
 // middleware
 app.use(express.urlencoded({ extended: true }));
+app.use(express.static('public'));
+app.use(methodOverride('_method'));
 
 // set up view engine
 app.set('view engine', 'jsx');
@@ -48,7 +51,7 @@ app.get('/product/new', (req, res) => {
 });
 
 // delete
-app.get('/product/delete/:id', (req, res) => {
+app.delete('/product/:id', (req, res) => {
   Product.findByIdAndDelete(req.params.id, (error) => {
     if (error) res.send(error);
     else res.redirect('/product');
@@ -56,8 +59,8 @@ app.get('/product/delete/:id', (req, res) => {
 });
 
 // update
-app.post('/product/:id', (req, res) => {
-  Product.findByIdAndUpdate(req.params.id, req.body, (error, updatedProduct) => {
+app.put('/product/:id', (req, res) => {
+  Product.findByIdAndUpdate(req.params.id, req.body, { new: true }, (error, updatedProduct) => {
     if (error) res.send(error);
     else res.redirect('/product/' + updatedProduct.id);
   });

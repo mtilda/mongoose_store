@@ -1,5 +1,6 @@
 const React = require('react');
 const Layout = require('./Components/Layout');
+const Nav = require('./Components/Nav');
 
 const styles = {
   body: {
@@ -60,7 +61,18 @@ class Show extends React.Component {
 
     return (
       <Layout>
-        <a href='/product'>back</a> | <a href={`/product/edit/${product.id}`}>edit</a> | <a href={`/product/delete/${product.id}`}>delete</a>
+        <Nav>
+          <form method='GET' action='/product'>
+            <input type='submit' value='back' />
+          </form>
+          <form method='GET' action={`/product/edit/${product.id}`}>
+            <input type='submit' value='edit' />
+          </form>
+          <form method='POST' action={`/product/${product.id}/?_method=DELETE`}>
+            <input type='submit' value='delete' />
+          </form>
+        </Nav>
+
         <div style={styles.body}>
           <div style={{ ...styles.img, backgroundImage: `url(${product.image})` }} />
           <div style={styles.aside}>

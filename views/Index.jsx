@@ -1,6 +1,7 @@
 const React = require('react');
 const Layout = require('./Components/Layout');
 const Nav = require('./Components/Nav');
+const NavLink = require('./Components/NavLink');
 const ProductCard = require('./Components/ProductCard');
 
 const styles = {
@@ -20,7 +21,10 @@ class Index extends React.Component {
     return (
       <Layout>
         <Nav>
-          <a href='/product/new'>new product</a>
+          <NavLink
+            href='/product/new'
+            label='New product'
+          />
         </Nav>
         <ul style={styles.list}>
           {this.props.products.map((product, index) =>

@@ -1,6 +1,7 @@
 const React = require('react');
 const Layout = require('./Components/Layout');
 const Nav = require('./Components/Nav');
+const NavLink = require('./Components/NavLink');
 
 const styles = {
   body: {
@@ -62,15 +63,21 @@ class Show extends React.Component {
     return (
       <Layout>
         <Nav>
-          <form method='GET' action='/product'>
-            <input type='submit' value='back' />
-          </form>
-          <form method='GET' action={`/product/edit/${product.id}`}>
-            <input type='submit' value='edit' />
-          </form>
-          <form method='POST' action={`/product/${product.id}/?_method=DELETE`}>
-            <input type='submit' value='delete' />
-          </form>
+          <NavLink
+            method='GET'
+            href='/product'
+            label='back'
+          />
+          <NavLink
+            method='GET'
+            href={`/product/edit/${product.id}`}
+            label='edit'
+          />
+          <NavLink
+            method='DELETE'
+            href={`/product/${product.id}`}
+            label='delete'
+          />
         </Nav>
 
         <div style={styles.body}>

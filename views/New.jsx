@@ -1,6 +1,7 @@
 const React = require('react');
 const Layout = require('./Components/Layout');
 const Nav = require('./Components/Nav');
+const NavLink = require('./Components/NavLink');
 
 const styles = {
   form: {
@@ -26,7 +27,10 @@ class New extends React.Component {
     return (
       <Layout>
         <Nav>
-          <a href={`/product${product.id ? '/' + product.id : ''}`}>back</a>
+          <NavLink
+            href={`/product${product.id ? '/' + product.id : ''}`}
+            label='back'
+          />
         </Nav>
         {/* if id exists, this is an edit form and should update */}
         {/* if id does not exist, this is a new form and should create */}

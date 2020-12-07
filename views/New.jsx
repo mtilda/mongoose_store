@@ -29,7 +29,7 @@ class New extends React.Component {
         <Nav>
           <NavLink
             href={`/product${product.id ? '/' + product.id : ''}`}
-            label='back'
+            label='Back'
           />
         </Nav>
         {/* if id exists, this is an edit form and should update */}

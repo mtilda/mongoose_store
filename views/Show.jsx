@@ -66,17 +66,17 @@ class Show extends React.Component {
           <NavLink
             method='GET'
             href='/product'
-            label='back'
+            label='Back'
           />
           <NavLink
             method='GET'
             href={`/product/edit/${product.id}`}
-            label='edit'
+            label='Edit'
           />
           <NavLink
             method='DELETE'
             href={`/product/${product.id}`}
-            label='delete'
+            label='Delete'
           />
         </Nav>
 

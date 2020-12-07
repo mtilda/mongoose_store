@@ -1,5 +1,15 @@
 const React = require('react');
 
+const style = {
+  fontSize: '1.2rem',
+  height: '2.2em',
+  padding: '0 1em 0 1em',
+  backgroundColor: 'transparent',
+  border: 'transparent',
+  fontWeight: 'bold',
+  cursor: 'pointer'
+};
+
 class NavLink extends React.Component {
   render () {
     let method = this.props.method || 'GET';
@@ -13,7 +23,7 @@ class NavLink extends React.Component {
 
     return (
       <form method={method} action={href}>
-        <input type='submit' value={label} />
+        <input type='submit' value={label} style={style} />
       </form>
     );
   }

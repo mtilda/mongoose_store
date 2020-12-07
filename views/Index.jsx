@@ -23,7 +23,7 @@ class Index extends React.Component {
         <Nav>
           <NavLink
             href='/product/new'
-            label='New product'
+            label='New Product'
           />
         </Nav>
         <ul style={styles.list}>

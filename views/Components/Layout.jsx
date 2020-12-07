@@ -23,6 +23,7 @@ class Layout extends React.Component {
       <html>
         <head>
           <link rel='stylesheet' href='/public/style.css' />
+          <title>Mongoose Store</title>
         </head>
         <body style={styles.body}>
           <h1 style={styles.h1}>Mongoose Store</h1>

@@ -79,7 +79,7 @@ app.get('/product/edit/:id', (req, res) => {
   Product.findById(req.params.id, (error, product) => {
     if (error) res.send(error);
     else {
-      res.render('New', {
+      res.render('Edit', {
         product: product
       });
     }

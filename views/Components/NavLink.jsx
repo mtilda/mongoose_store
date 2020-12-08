@@ -23,7 +23,7 @@ class NavLink extends React.Component {
 
     return (
       <form method={method} action={href}>
-        <input type='submit' value={label} style={style} />
+        <input type='submit' value={label} style={{ ...style, ...this.props.style }} />
       </form>
     );
   }

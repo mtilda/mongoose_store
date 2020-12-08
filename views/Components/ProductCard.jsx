@@ -48,15 +48,15 @@ class ProductCard extends React.Component {
 
     return (
       <li style={styles.card}>
-        <a href={`/product/${product.id}`}>
+        <a href={`/product/${product.id}`} aria-hidden='true'>
           <div style={{ ...styles.img, backgroundImage: `url(${product.image})` }} />
         </a>
-        <h3 style={styles.title}>
+        <div style={styles.title}>
           <a style={styles.a} href={`/product/${product.id}`}>
             {product.name}
           </a>
-        </h3>
-        <h4 style={styles.price}>${product.price}</h4>
+        </div>
+        <div style={styles.price}><span aria-hidden='true'>$</span>{product.price}<span className='sr-only'>US dollars</span></div>
       </li>
     );
   }

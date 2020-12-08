@@ -52,6 +52,18 @@ const styles = {
     margin: 0,
     padding: '5px',
     fontSize: '1.5rem'
+  },
+  buy: {
+    margin: '1em 0',
+    fontSize: '1.2rem',
+    height: '2.2em',
+    padding: '0 2em 0 2em',
+    color: 'white',
+    backgroundColor: 'cornflowerblue',
+    border: 'transparent',
+    borderRadius: '10px',
+    fontWeight: 'bold',
+    cursor: 'pointer'
   }
 };
 
@@ -91,6 +103,9 @@ class Show extends React.Component {
             <p style={styles.p}>{product.description}</p>
             <p style={styles.stock}>{product.quantity > 0 ? 'In Stock.' : 'Out of Stock.'}</p>
             <p style={styles.p}><span style={{ fontWeight: 'bold' }}>Quanity: </span>{product.quantity}</p>
+            <form method='POST' action={`/product/buy/${product.id}?_method=PUT`}>
+              <input type='submit' value='Buy' style={styles.buy} />
+            </form>
           </div>
         </div>
       </Layout>

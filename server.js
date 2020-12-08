@@ -98,6 +98,21 @@ app.get('/product/:id', (req, res) => {
   });
 });
 
+// buy
+app.put('/product/buy/:id', (req, res) => {
+  Product.findById(req.params.id, 'quantity', (error, product) => {
+    if (error) res.send(error);
+    else {
+      if (product.quantity > 0) {
+        Product.findByIdAndUpdate(req.params.id, { $inc: { quantity: -1 } }, { new: true }, (error, updatedProduct) => {
+          if (error) res.send(error);
+          else res.redirect('/product/' + updatedProduct.id);
+        });
+      }
+    }
+  });
+});
+
 // listener
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);

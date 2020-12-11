@@ -2,7 +2,7 @@
 require('dotenv').config();
 const express = require('express');
 const app = express();
-const PORT = 3000;
+const PORT = process.env.PORT || 3000;
 const mongoose = require('mongoose');
 const MONGO_STRING = process.env.MONGO_STRING;
 const methodOverride = require('method-override');
@@ -32,6 +32,10 @@ mongoose.set('useFindAndModify', false);
 const Product = require('./models/product.js');
 
 // routes
+
+app.get("/", (req, res) => {
+ res.redirect('/product');
+});
 
 // index
 app.get('/product', (req, res) => {

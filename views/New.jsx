@@ -8,8 +8,7 @@ const styles = {
     lineHeight: '1.5em'
   },
   description: {
-    height: '4em',
-    wordBreak: 'break-word'
+    
   }
 };
 
@@ -38,7 +37,7 @@ class New extends React.Component {
           <label>Name: </label><br />
           <input type='text' name='name' defaultValue={product.name} /><br />
           <label>Description: </label><br />
-          <input type='text' name='description' defaultValue={product.description} style={styles.description} /><br />
+          <input type='textarea' name='description' defaultValue={product.description} style={styles.description} /><br />
           <label>Image URL: </label><br />
           <input type='text' name='image' defaultValue={product.image} /><br />
           <label>Price: </label><br />

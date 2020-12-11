@@ -2,12 +2,12 @@
 require('dotenv').config();
 const express = require('express');
 const app = express();
-const PORT = process.env.PORT || 3000;
 const mongoose = require('mongoose');
 const MONGO_STRING = process.env.MONGO_STRING;
 const methodOverride = require('method-override');
 
-app.use('/public', express.static('public'));
+// use heroku's port or default to 3000
+const PORT = process.env.PORT || 3000;
 
 // middleware
 app.use(express.urlencoded({ extended: true }));
@@ -20,11 +20,13 @@ app.engine('jsx', require('express-react-views').createEngine());
 
 // connect to database
 mongoose.connect(MONGO_STRING, { useNewUrlParser: true, useUnifiedTopology: true });
-mongoose.connection.once('open', () => {
-  console.log('Connected to MongoDB');
-});
 
-// Make Mongoose use `findOneAndUpdate()`. Note that this option is `true`
+// error / success
+db.on('error', (err) => console.log(err.message + ' is Mongod not running?'));
+db.on('connected', () => console.log('mongo connected'));
+db.on('disconnected', () => console.log('mongo disconnected'));
+
+// make Mongoose use `findOneAndUpdate()`. Note that this option is `true`
 // by default, you need to set it to false.
 mongoose.set('useFindAndModify', false);
 

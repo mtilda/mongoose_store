@@ -38,9 +38,9 @@ app.get("/", (req, res) => {
 });
 
 // index
-app.get('/product', (req, res) => {
+app.get('/product', (req, res, next) => {
   Product.find({}, (error, allProducts) => {
-    if (error) res.send(error);
+    if (error) next(err);
     else {
       res.render('Index', {
         products: allProducts
@@ -55,33 +55,33 @@ app.get('/product/new', (req, res) => {
 });
 
 // delete
-app.delete('/product/:id', (req, res) => {
+app.delete('/product/:id', (req, res, next) => {
   Product.findByIdAndDelete(req.params.id, (error) => {
-    if (error) res.send(error);
+    if (error) next(error);
     else res.redirect('/product');
   });
 });
 
 // update
-app.put('/product/:id', (req, res) => {
+app.put('/product/:id', (req, res, next) => {
   Product.findByIdAndUpdate(req.params.id, req.body, { new: true }, (error, updatedProduct) => {
-    if (error) res.send(error);
+    if (error) next(error);
     else res.redirect('/product/' + updatedProduct.id);
   });
 });
 
 // create
-app.post('/product', (req, res) => {
+app.post('/product', (req, res, next) => {
   Product.create(req.body, (error, createdProduct) => {
-    if (error) res.send(error);
+    if (error) next(error);
     else res.redirect('/product');
   });
 });
 
 // edit
-app.get('/product/edit/:id', (req, res) => {
+app.get('/product/edit/:id', (req, res, next) => {
   Product.findById(req.params.id, (error, product) => {
-    if (error) res.send(error);
+    if (error) next(error);
     else {
       res.render('Edit', {
         product: product
@@ -91,9 +91,9 @@ app.get('/product/edit/:id', (req, res) => {
 });
 
 // show
-app.get('/product/:id', (req, res) => {
+app.get('/product/:id', (req, res, next) => {
   Product.findById(req.params.id, (error, product) => {
-    if (error) res.send(error);
+    if (error) next(error);
     else {
       res.render('Show', {
         product: product
@@ -103,9 +103,9 @@ app.get('/product/:id', (req, res) => {
 });
 
 // buy
-app.put('/product/buy/:id', (req, res) => {
+app.put('/product/buy/:id', (req, res, next) => {
   Product.findById(req.params.id, 'quantity', (error, product) => {
-    if (error) res.send(error);
+    if (error) next(error);
     else {
       if (product.quantity > 0) {
         Product.findByIdAndUpdate(req.params.id, { $inc: { quantity: -1 } }, { new: true }, (error, updatedProduct) => {

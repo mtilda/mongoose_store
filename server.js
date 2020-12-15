@@ -4,7 +4,7 @@ const express = require('express');
 const app = express();
 const mongoose = require('mongoose');
 const db = mongoose.connection;
-const MONGO_STRING = process.env.MONGO_STRING;
+const MONGO_URI = process.env.MONGO_URI;
 const methodOverride = require('method-override');
 
 // use heroku's port or default to 3000
@@ -20,7 +20,7 @@ app.set('view engine', 'jsx');
 app.engine('jsx', require('express-react-views').createEngine());
 
 // connect to database
-mongoose.connect(MONGO_STRING, {
+mongoose.connect(MONGO_URI, {
   useNewUrlParser: true,
   useUnifiedTopology: true
 });

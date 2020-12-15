@@ -1,7 +1,6 @@
 const React = require('react');
 const Layout = require('./Components/Layout');
 const Nav = require('./Components/Nav');
-const NavSection = require('./Components/NavSection');
 const NavLink = require('./Components/NavLink');
 
 const styles = {
@@ -27,22 +26,22 @@ class New extends React.Component {
 
     return (
       <Layout>
-        <Nav justify='space-between'>
-          <NavSection justify='left'>
+        <Nav
+          leftContent={
             <NavLink
               method='GET'
               href='/product'
               label='Cancel'
             />
-          </NavSection>
-          <NavSection justify='right'>
+          }
+          rightContent={
             <NavLink
               method='DELETE'
               href={`/product/${product.id}`}
               label='Delete'
             />
-          </NavSection>
-        </Nav>
+          }
+        />
 
         <h2>Edit Product</h2>
         <form action={`/product/${product.id}/?_method=PUT`} method='POST' style={styles.form}>

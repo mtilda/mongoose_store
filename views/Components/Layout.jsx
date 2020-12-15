@@ -22,6 +22,7 @@ class Layout extends React.Component {
     return (
       <html>
         <head>
+          <meta charSet='utf-8' />
           <link rel='stylesheet' href='/public/style.css' />
           <title>Mongoose Store</title>
         </head>

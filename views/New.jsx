@@ -8,7 +8,7 @@ const styles = {
     lineHeight: '1.5em'
   },
   description: {
-    
+
   }
 };
 
@@ -25,12 +25,14 @@ class New extends React.Component {
 
     return (
       <Layout>
-        <Nav>
-          <NavLink
-            href='/product'
-            label='Back'
-          />
-        </Nav>
+        <Nav
+          leftContent={
+            <NavLink
+              href='/product'
+              label='Back'
+            />
+          }
+        />
 
         <h2>New Product</h2>
         <form action='/product' method='POST' style={styles.form}>

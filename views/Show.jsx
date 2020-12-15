@@ -1,7 +1,6 @@
 const React = require('react');
 const Layout = require('./Components/Layout');
 const Nav = require('./Components/Nav');
-const NavSection = require('./Components/NavSection');
 const NavLink = require('./Components/NavLink');
 
 const styles = {
@@ -75,22 +74,22 @@ class Show extends React.Component {
 
     return (
       <Layout>
-        <Nav justify='space-between'>
-          <NavSection justify='left'>
+        <Nav
+          leftContent={
             <NavLink
               method='GET'
               href='/product'
               label='Back'
             />
-          </NavSection>
-          <NavSection justify='right'>
+          }
+          rightContent={
             <NavLink
               method='GET'
               href={`/product/edit/${product.id}`}
               label='Edit'
             />
-          </NavSection>
-        </Nav>
+          }
+        />
 
         <div style={styles.body}>
           <div style={{ ...styles.img, backgroundImage: `url(${product.image})` }} />

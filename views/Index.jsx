@@ -20,12 +20,15 @@ class Index extends React.Component {
   render () {
     return (
       <Layout>
-        <Nav>
-          <NavLink
-            href='/product/new'
-            label='New Product'
-          />
-        </Nav>
+        <Nav
+          leftContent={
+            <NavLink
+              href='/product/new'
+              label='New Product'
+            />
+          }
+        />
+
         <ul style={styles.list}>
           {this.props.products.map((product, index) =>
             <ProductCard key={index} product={product} />

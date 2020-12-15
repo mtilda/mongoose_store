@@ -6,15 +6,9 @@ class Nav extends React.Component {
 
     return (
       <nav style={{ display: 'flex', justifyContent: 'space-between', ...style }}>
-        {leftContent
-          ? <div style={{ display: 'flex', justifyContent: 'left' }}>{leftContent}</div>
-          : <></>}
-        {centerContent
-          ? <div style={{ display: 'flex', justifyContent: 'center' }}>{centerContent}</div>
-          : <></>}
-        {rightContent
-          ? <div style={{ display: 'flex', justifyContent: 'right' }}>{rightContent}</div>
-          : <></>}
+        <div style={{ display: 'flex', justifyContent: 'left' }}>{leftContent}</div>
+        <div style={{ display: 'flex', justifyContent: 'center' }}>{centerContent}</div>
+        <div style={{ display: 'flex', justifyContent: 'right' }}>{rightContent}</div>
       </nav>
     );
   }

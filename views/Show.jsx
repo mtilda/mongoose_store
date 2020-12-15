@@ -97,7 +97,7 @@ class Show extends React.Component {
             <h3 style={styles.title}>
               {product.name}
             </h3>
-            <hr />
+            <hr aria-hidden='true' />
             <h4 style={styles.price}><span style={{ fontSize: '0.6em' }}>Price:</span><span style={{ color: '#E33' }}>${product.price}</span></h4>
             <p style={styles.p}>{product.description}</p>
             <p style={styles.stock}>{product.quantity > 0 ? 'In Stock.' : 'Out of Stock.'}</p>

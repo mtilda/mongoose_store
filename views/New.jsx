@@ -36,16 +36,16 @@ class New extends React.Component {
 
         <h2>New Product</h2>
         <form action='/product' method='POST' style={styles.form}>
-          <label>Name: </label><br />
-          <input type='text' name='name' defaultValue={product.name} /><br />
-          <label>Description: </label><br />
-          <input type='textarea' name='description' defaultValue={product.description} style={styles.description} /><br />
-          <label>Image URL: </label><br />
-          <input type='text' name='image' defaultValue={product.image} /><br />
-          <label>Price: </label><br />
-          <input type='text' name='price' defaultValue={product.price} /><br />
-          <label>Quantity: </label><br />
-          <input type='text' name='quantity' defaultValue={product.quantity} /><br />
+          <label>Name: </label><br aria-hidden='true' />
+          <input type='text' name='name' defaultValue={product.name} /><br aria-hidden='true' />
+          <label>Description: </label><br aria-hidden='true' />
+          <input type='textarea' name='description' defaultValue={product.description} style={styles.description} /><br aria-hidden='true' />
+          <label>Image URL: </label><br aria-hidden='true' />
+          <input type='text' name='image' defaultValue={product.image} /><br aria-hidden='true' />
+          <label>Price: </label><br aria-hidden='true' />
+          <input type='text' name='price' defaultValue={product.price} /><br aria-hidden='true' />
+          <label>Quantity: </label><br aria-hidden='true' />
+          <input type='text' name='quantity' defaultValue={product.quantity} /><br aria-hidden='true' />
           <input type='submit' value='Submit' />
         </form>
       </Layout>

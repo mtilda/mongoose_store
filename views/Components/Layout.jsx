@@ -28,7 +28,7 @@ class Layout extends React.Component {
         </head>
         <body style={styles.body}>
           <h1 style={styles.h1}>Mongoose Store</h1>
-          <hr />
+          <hr aria-hidden='true' />
           <main style={styles.main}>
             {this.props.children}
           </main>

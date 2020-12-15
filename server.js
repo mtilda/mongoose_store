@@ -20,7 +20,10 @@ app.set('view engine', 'jsx');
 app.engine('jsx', require('express-react-views').createEngine());
 
 // connect to database
-mongoose.connect(MONGO_STRING, { useNewUrlParser: true, useUnifiedTopology: true });
+mongoose.connect(MONGO_STRING, {
+  useNewUrlParser: true,
+  useUnifiedTopology: true
+});
 
 // error / success
 db.on('error', (err) => console.log(err.message + ' is Mongod not running?'));
@@ -36,14 +39,14 @@ const Product = require('./models/product.js');
 
 // routes
 
-app.get("/", (req, res) => {
- res.redirect('/product');
+app.get('/', (req, res) => {
+  res.redirect('/product');
 });
 
 // index
 app.get('/product', (req, res, next) => {
   Product.find({}, (error, allProducts) => {
-    if (error) next(err);
+    if (error) next(error);
     else {
       res.render('Index', {
         products: allProducts
